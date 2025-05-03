@@ -12,9 +12,10 @@ Request Body :
 
 ```json
 {
-  "firstName": "Eko",
-  "lastName": "rahasia",
-  "email": "ekorahasia@gmail.com"
+  "first_name": "Eko",
+  "last_name": "Khannedy",
+  "email": "eko@pzn.com",
+  "phone": "32423423434"
 }
 ```
 
@@ -24,10 +25,10 @@ Response Body Success :
 {
   "data": {
     "id": 1,
-    "firstName": "Eko",
-    "lastName": "rahasia",
-    "email": "ekorahasia@gmail.com",
-    "phone": "981234798234"
+    "first_name": "Eko",
+    "last_name": "Khannedy",
+    "email": "eko@pzn.com",
+    "phone": "32423423434"
   }
 }
 ```
@@ -36,70 +37,74 @@ Response Body Error :
 
 ```json
 {
-  "errors": "email is not valid"
+  "errors": "Email is not valid format"
 }
 ```
 
 ## Update Contact API
 
-Endpoint : POST /api/contacts
+Endpoint : PUT /api/contacts/:id
 
 Headers :
 
 - Authorization : token
 
-Response Body :
+Request Body :
 
 ```json
 {
-  "firstName": "Eko",
-  "lastName": "rahasia",
-  "email": "ekorahasia@gmail.com",
-  "phone": "981234798234"
+  "first_name": "Eko",
+  "last_name": "Khannedy",
+  "email": "eko@pzn.com",
+  "phone": "32423423434"
 }
 ```
 
-Response Body Success:
-
-```json
-{
-  "data": {
-    "token": "unique token"
-  }
-}
-```
-
-Response Body Error:
-
-```json
-{
-  "errors": "Username or password wrong"
-}
-```
-
-## Get Contact API
-
-Endpoint GET /api/contacts/:id
-
-Headers :
-
-- Authorization : token
-
-Response Body Success:
+Response Body Success :
 
 ```json
 {
   "data": {
     "id": 1,
-    "firstName": "Eko",
-    "lastName": "rahasia",
-    "email": "ekorahasia@gmail.com",
-    "phone": "981234798234"
+    "first_name": "Eko",
+    "last_name": "Khannedy",
+    "email": "eko@pzn.com",
+    "phone": "32423423434"
   }
 }
 ```
 
-Response Body Error:
+Response Body Error :
+
+```json
+{
+  "errors": "Email is not valid format"
+}
+```
+
+## Get Contact API
+
+Endpoint : GET /api/contacts/:id
+
+Headers :
+
+- Authorization : token
+
+Response Body Success :
+
+```json
+{
+  "data": {
+    "id": 1,
+    "first_name": "Eko",
+    "last_name": "Khannedy",
+    "email": "eko@pzn.com",
+    "phone": "32423423434"
+  }
+}
+```
+
+Response Body Error :
 
 ```json
 {
@@ -109,7 +114,7 @@ Response Body Error:
 
 ## Search Contact API
 
-Endpoint : GET /api/users/current
+Endpoint : GET /api/contacts
 
 Headers :
 
@@ -117,47 +122,41 @@ Headers :
 
 Query params :
 
-- name: Search by firstName or lastName, using like, optional
-- email: Search by email using like, optional
-- phone: Search by phone using like, optional
-- page: number of page, default 1
-- size: size per page, default 10
+- name : Search by first_name or last_name, using like, optional
+- email : Search by email using like, optional
+- phone : Search by phone using like, optional
+- page : number of page, default 1
+- size : size per page, default 10
 
-Response Body Success:
+Response Body Success :
 
 ```json
 {
   "data": [
     {
       "id": 1,
-      "firstName": "Eko",
-      "lastName": "rahasia",
-      "email": "ekorahasia@gmail.com",
-      "phone": "981234798234"
+      "first_name": "Eko",
+      "last_name": "Khannedy",
+      "email": "eko@pzn.com",
+      "phone": "32423423434"
     },
     {
       "id": 2,
-      "firstName": "Eko",
-      "lastName": "rahasia",
-      "email": "ekorahasia@gmail.com",
-      "phone": "981234798234"
+      "first_name": "Eko",
+      "last_name": "Khannedy",
+      "email": "eko@pzn.com",
+      "phone": "32423423434"
     }
   ],
-  "pagination": {
+  "paging": {
     "page": 1,
-    "totalPage": 3,
-    "totalItem": 30
+    "total_page": 3,
+    "total_item": 30
   }
 }
 ```
 
-Response Body Error:
-
-```json
-{
-  "errors": "Unauthorized"
-}
-```
+Response Body Error :
 
 ## Remove Contact API
 
@@ -167,18 +166,18 @@ Headers :
 
 - Authorization : token
 
-Response Body Success:
+Response Body Success :
 
 ```json
 {
-  "data": "Delete success"
+  "data": "OK"
 }
 ```
 
-Response Body Error:
+Response Body Error :
 
 ```json
 {
-  "errors": "Unauthorized"
+  "errors": "Contact is not found"
 }
 ```
