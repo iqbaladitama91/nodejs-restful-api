@@ -12,7 +12,7 @@
             "name": "Local MySQL",
             "database": "expressjs",
             "username": "root",
-            "password": ""
+            "password": "admin123"
         }
     ]
 }

@@ -15,7 +15,7 @@
   "author": "Muhammad Iqbal Aditama",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "6.7.0",
+    "@prisma/client": "^6.7.0",
     "bcrypt": "5.1.1",
     "express": "5.1.0",
     "joi": "17.13.3",
