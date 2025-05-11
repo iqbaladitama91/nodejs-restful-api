@@ -192,10 +192,7 @@ describe("DELETE /api/users/logout", function () {
   it("should can logout", async () => {
     const result = await supertest(web)
       .delete("/api/users/logout")
-      .set("Authorization", "test")
-      .send({
-        username: "BJIRR",
-      });
+      .set("Authorization", "test");
 
     expect(result.status).toBe(200);
     expect(result.body.data).toBe("OK");
@@ -207,10 +204,7 @@ describe("DELETE /api/users/logout", function () {
   it("should reject logout if token invalid", async () => {
     const result = await supertest(web)
       .delete("/api/users/logout")
-      .set("Authorization", "salah")
-      .send({
-        username: "BJIRR",
-      });
+      .set("Authorization", "salah");
 
     expect(result.status).toBe(401);
   });
