@@ -179,3 +179,39 @@ describe("PATCH /api/users/current", function () {
     expect(await bcrypt.compare("rahasialagi", user.password)).toBe(true);
   });
 });
+
+describe("DELETE /api/users/logout", function () {
+  beforeEach(async () => {
+    await createTestUser();
+  });
+
+  afterEach(async () => {
+    await removeTestUser();
+  });
+
+  it("should can logout", async () => {
+    const result = await supertest(web)
+      .delete("/api/users/logout")
+      .set("Authorization", "test")
+      .send({
+        username: "BJIRR",
+      });
+
+    expect(result.status).toBe(200);
+    expect(result.body.data).toBe("OK");
+
+    const user = await getTestUser();
+    expect(user.token).toBeNull();
+  });
+
+  it("should reject logout if token invalid", async () => {
+    const result = await supertest(web)
+      .delete("/api/users/logout")
+      .set("Authorization", "salah")
+      .send({
+        username: "BJIRR",
+      });
+
+    expect(result.status).toBe(401);
+  });
+});
